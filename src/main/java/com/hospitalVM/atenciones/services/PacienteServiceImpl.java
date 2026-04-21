@@ -38,6 +38,14 @@ public class PacienteServiceImpl implements PacienteService {
         );
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public Paciente findByCorreo(String correo) {
+        return this.pacienteRepository.findByCorreo(correo).orElseThrow(
+                () -> new PacienteInexistenteException("Paciente con correo: " + correo + " no encontrado")
+        );
+    }
+
     @Transactional
     @Override
     public Paciente save(Paciente paciente) {
@@ -61,7 +69,6 @@ public class PacienteServiceImpl implements PacienteService {
             element.setApellidos(paciente.getApellidos());
             element.setFechaNacimiento(paciente.getFechaNacimiento());
             element.setCorreo(paciente.getCorreo());
-            // El run no se actualiza (igual que Medico no actualiza run)
             return this.pacienteRepository.save(element);
         }).orElseThrow(
                 () -> new PacienteInexistenteException("El paciente con id: " + id + " no existe")

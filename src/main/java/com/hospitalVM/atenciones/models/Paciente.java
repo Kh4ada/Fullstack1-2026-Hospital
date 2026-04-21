@@ -38,14 +38,15 @@ public class Paciente {
     @NotBlank(message = "El campo apellidos no puede ser vacio")
     private String apellidos;
 
+    @NotNull(message = "El campo de fecha de nacimiento no puede ser vacio")
     @Column(name = "fecha_nacimiento", nullable = true)
     private Date fechaNacimiento;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     @NotBlank(message = "El campo correo no puede ser vacio")
     @Email(message = "El correo no tiene un formato valido")
     private String correo;
 
     @Embedded
-    private Audit audit = new Audit();
+    Audit audit = new Audit();
 }

@@ -40,6 +40,13 @@ public class PacienteController {
                 .body(this.pacienteService.findByRun(run));
     }
 
+    @GetMapping("/correo/{correo}")
+    public ResponseEntity<Paciente> findByCorreo(@PathVariable String correo) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(this.pacienteService.findByCorreo(correo));
+    }
+
     @PostMapping
     public ResponseEntity<Paciente> save(@Valid @RequestBody Paciente paciente) {
         return ResponseEntity

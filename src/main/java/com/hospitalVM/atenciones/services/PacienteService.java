@@ -8,6 +8,7 @@ public interface PacienteService {
     List<Paciente> findAll();
     Paciente findById(Long id);
     Paciente findByRun(String run);
+    Paciente findByCorreo(String correo);
     Paciente save(Paciente paciente);
     void deleteById(Long id);
     Paciente updateById(Long id, Paciente paciente);
