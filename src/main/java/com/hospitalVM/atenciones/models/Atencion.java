@@ -10,7 +10,7 @@ import lombok.ToString;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name= "atenciones")
+@Table(name = "atenciones")
 @Getter
 @Setter
 @ToString
@@ -31,6 +31,18 @@ public class Atencion {
     private Double costo;
 
     private String comentario;
+
+
+    @ManyToOne
+    @JoinColumn(name = "paciente_id", nullable = false)
+    @NotNull(message = "El campo paciente no puede ser nulo")
+    private Paciente paciente;
+
+
+    @ManyToOne
+    @JoinColumn(name = "medico_id", nullable = false)
+    @NotNull(message = "El campo medico no puede ser nulo")
+    private Medico medico;
 
     @Embedded
     Audit audit = new Audit();

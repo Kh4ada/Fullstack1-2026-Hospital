@@ -10,4 +10,8 @@ public interface AtencionService {
     Atencion save(Atencion atencion);
     void deleteById(Long id);
     Atencion updateById(Long id, Atencion atencion);
+
+
+    List<Atencion> findByPacienteId(Long pacienteId);
+    List<Atencion> findByMedicoId(Long medicoId);
 }
